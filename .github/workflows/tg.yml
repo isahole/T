@@ -1,0 +1,19 @@
+name: TG_Sync
+on:
+  schedule:
+    - cron:  '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  tg_sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: isahole/forks@main
+        with:
+          github_token: ${{ secrets.PAT }}
+          upstream_repository: Salin1810/trojan-heroku
+          target_repository: isahole/T
+          upstream_branch: main
+          target_branch: tg
+          force: true
+          tags: true
