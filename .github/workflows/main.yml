@@ -1,0 +1,19 @@
+name: Sync
+on:
+  schedule:
+    - cron:  '0 7 * * 1'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: isahole/forks@main
+        with:
+          github_token: ${{ secrets.PAT }}
+          upstream_repository: iamtrazy/trojan-ws-heroku
+          target_repository: isahole/T
+          upstream_branch: main
+          target_branch: td
+          force: true
+          tags: true
